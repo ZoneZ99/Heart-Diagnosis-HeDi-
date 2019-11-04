@@ -37,3 +37,25 @@ def load_dataset(dataset_name: str):
             target_attribute[index] = np.asarray(sample[-1], dtype=np.int)
 
     return data_attribute, target_attribute, target_attribute_names
+
+
+def load_cardio_dataset():
+    data, target, target_names = load_dataset('cardio.csv')
+    return DatasetContainer(
+        data=data,
+        target=target,
+        target_names=target_names,
+        feature_names=[
+            'Age (days)',
+            'Gender (F/M)',
+            'Height (cm)',
+            'Weight (kg)',
+            'Systolic Blood Pressure',
+            'Diastolic Blood Pressure',
+            'Cholesterol (normal/above normal/high)',
+            'Glucose (normal/above normal/high)',
+            'Smoking (Yes/No)',
+            'Alcohol Intake (Yes/No)',
+            'Physical Activity (Yes/No)',
+        ]
+    )
