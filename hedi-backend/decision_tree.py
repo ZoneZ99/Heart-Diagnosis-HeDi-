@@ -22,7 +22,14 @@ def entropy_one_division(division):
     num_of_division = len(division)
     classess = set(division)
 
-    for clas in classes:
-        sum_entropy += sum(division == clas)*1.0/num_of_divission * entropy_calculation(sum(division == clas ),sum(division != clas))
+    for clas in classess:
+        sum_entropy += sum(division == clas)*1.0/num_of_division * entropy_calculation(sum(division == clas ),sum(division != clas))
     return sum_entropy, num_of_division
+
+def get_entropy(y_predict, y_real):
+
+    n = len(y_real)
+    s_true, n_true = entropy_one_division(y_real[y_predict])
+    s_false, n_false = entropy_one_division(y_real[~y_predict])
+    return  n_true*1.0/n*s_true + n_false*1.0/n*s_false
 
