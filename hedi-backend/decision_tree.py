@@ -33,3 +33,8 @@ def get_entropy(y_predict, y_real):
     s_false, n_false = entropy_one_division(y_real[~y_predict])
     return  n_true*1.0/n*s_true + n_false*1.0/n*s_false
 
+def information_gain():
+    pass
+
+
+
