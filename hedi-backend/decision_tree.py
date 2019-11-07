@@ -1,4 +1,5 @@
 import numpy as np
+from dataset import DatasetContainer
 
 class DecisionTreeClassifier:
 
@@ -83,3 +84,15 @@ class DecisionTreeClassifier:
 		for i, row in enumerate(test_data):
 			results[i] = self._get_gprediction(row)
 		return results
+
+def train_test_split(dataset: DatasetContainer, test_size: float):
+    assert len(dataset.data) == len(dataset.target), \
+        "Number of data and target should be the same."
+
+    dataset_length = len(dataset.data)
+    test_length = math.floor(test_size * len(dataset.data))
+
+    x_train, y_train = dataset.data[:dataset_length - test_length], dataset.target[:dataset_length - test_length]
+    x_test, y_test = dataset.data[dataset_length - test_length:], dataset.target[dataset_length - test_length:]
+    return x_train, x_test, y_train, y_test
+
