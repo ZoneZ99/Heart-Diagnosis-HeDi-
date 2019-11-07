@@ -60,3 +60,26 @@ class DecisionTreeClassifier:
 			self.depth += 1
 			self.trees = parent_node
 			return parent_node
+
+	def _get_prediction(self, row):
+		current_layer = self.trees
+		while current_layer and current_layer.get('cutoff'):
+			if row[current_layer['index_col']] < current_layer['cutoff']:
+				if current_layer['left']:
+					current_layer = current_layer['left']
+				else:
+					break
+			else:
+				if current_layer['right']:
+					current_layer = current_layer['right']
+				else:
+					break
+		return current_layer.get('val')
+	
+	def predict(self, test_data):
+		assert hasattr(self, 'trees'), "The tree needs to be trained first. Use fit() to train."
+
+		results = np.array([0]*len(test_data))
+		for i, row in enumerate(test_data):
+			results[i] = self._get_gprediction(row)
+		return results
