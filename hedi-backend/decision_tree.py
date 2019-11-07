@@ -118,18 +118,6 @@ class DecisionTreeClassifier:
         return current_layer.get('val')
 
 
-def train_test_split(dataset: DatasetContainer, test_size: float):
-    assert len(dataset.data) == len(dataset.target), \
-        "Number of data and target should be the same."
-
-    dataset_length = len(dataset.data)
-    test_length = math.floor(test_size * len(dataset.data))
-
-    x_train, y_train = dataset.data[:dataset_length - test_length], dataset.target[:dataset_length - test_length]
-    x_test, y_test = dataset.data[dataset_length - test_length:], dataset.target[dataset_length - test_length:]
-    return x_train, x_test, y_train, y_test
-
-
 def can_be_added_to_queue(tree):
     has_children = tree.get('left') is not None or tree.get('right') is not None
     has_sub_trees = not tree.get('left')['IsLeafNode'] and not tree.get('right')['IsLeafNode']
