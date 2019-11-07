@@ -22,6 +22,7 @@ class DecisionTreeClassifier:
 	def find_best_split_of_all(self, x, y):
 		column = None
 		min_entropy = 1
+		cutoff = None
 		for i, c in enumerate(x.T):
 			entropy, current_cutoff = self.find_best_split(c, y)
 			if not entropy:
