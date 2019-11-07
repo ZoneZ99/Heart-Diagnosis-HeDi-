@@ -177,40 +177,7 @@ class DecisionTreeClassifier:
                     break
         return current_layer.get('val')
 
-    def can_be_added_to_queue(self,tree):
-        return tree is not None and tree['left'] is not None and tree['right'] is not None
-
-    def prune(self,tree):
-        priority_queue = []
-        priority_queue.append(tree)
-
-
-        while(len(priority_queue)>0):
-            current_node = priority_queue[0]
-            chisquare_current = self.count_chisquare(current_node)
-            chisquare_left = self.count_chisquare(current_node['left'])
-            chisquare_right = self.count_chisquare(current_node['right'])
-            if (chisquare_left>chisquare_current): current_node['left'] = None
-            if (chisquare_right>chisquare_current): current_node['right'] = None
-            if (self.can_be_added_to_queue(tree['left'])): priority_queue.append(tree['left'])
-            if (self.can_be_added_to_queue(tree['right'])): priority_queue.append(tree['right'])
-            priority_queue.remove(current_node)
-
-    def count_chisquare(self,tree):
-        num_of_parent_population = tree['Positive(1)'] + tree['Negative(0)']
-        chance_positive = tree['Positive(1)']/num_of_parent_population
-        chance_negative = tree['Negative(1)']/num_of_parent_population
-        left_child = tree['left']
-        right_child = tree['right']
-        chisquare_left_positive = self.count_chisquare_util(left_child['Positive(1)']+left_child['Negative(0)'],chance_positive,left_child['Positive(1)'])
-        chisquare_left_negative = self.count_chisquare_util(left_child['Positive(1)']+left_child['Negative(0)'],chance_negative,left_child['Negative(0)'])
-        chisquare_right_positive = self.count_chisquare_util(right_child['Positive(1)']++right_child['Negative(0)'],chance_positive,right_child['Positive(1)'])
-        chisquare_right_negative = self.count_chisquare_util(right_child['Positive(1)']++right_child['Negative(0)'],chance_negative,right_child['Negative(0)'])
-        return chisquare_left_negative + chisquare_left_positive + chisquare_right_negative +chisquare_right_positive
-
-
-    def count_chisquare_util(self,total_population,chance,class_population):
-        return (total_population*chance-class_population)**2/(total_population*chance)
+    
 
 
 
