@@ -74,22 +74,23 @@ class DecisionTreeClassifier:
         elif len(target_variable) == 0:
             return None
         elif self.all_same(target_variable):
-            return {'val': target_variable[0]}
+            return {'val': target_variable[0].item()}
         elif depth >= self.max_depth:
             return None
         else:
             column, cutoff, entropy = self.find_best_split_of_all(feature_set, target_variable)
             y_left = target_variable[feature_set[:, column] < cutoff]
             y_right = target_variable[feature_set[:, column] >= cutoff]
-            parent_node = {'col': self.dataset.feature_names[column],
-                           'index_col': column,
-                           'cutoff': cutoff,
-                           'Positive(1)': list(target_variable).count(1),
-                           'Negative(0)': list(target_variable).count(0),
-                           'val': np.round(np.mean(target_variable)),
-                           'left': self.fit(feature_set[feature_set[:, column] < cutoff], y_left, {}, depth + 1),
-                           'right': self.fit(feature_set[feature_set[:, column] >= cutoff], y_right, {}, depth + 1)
-                           }
+            parent_node = {
+                'col': self.dataset.feature_names[column],
+                'index_col': column,
+                'cutoff': cutoff.item(),
+                'Positive(1)': list(target_variable).count(1),
+                'Negative(0)': list(target_variable).count(0),
+                'val': np.round(np.mean(target_variable)).item(),
+                'left': self.fit(feature_set[feature_set[:, column] < cutoff], y_left, {}, depth + 1),
+                'right': self.fit(feature_set[feature_set[:, column] >= cutoff], y_right, {}, depth + 1)
+            }
             self.depth += 1
             self.trees = parent_node
             return parent_node
