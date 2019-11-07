@@ -1,72 +1,76 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        hedi-frontend
-      </h1>
-      <h2 class="subtitle">
-        Health Diagnosis Frontend Web
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
+  <div>
+    <div id="hero-header" class="grid-2">
+      <div id="logo-header">
+        <h1>hedi</h1>
+      </div>
+      <div id="content-header">
+        <p>Penyakit kardiovaskular menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.</p>
+        <p>
+          <strong>Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI !</strong>
+        </p>
+        <a href="#title-form-diagnosa">
+          <button>Diagnosis Sekarang !</button>
         </a>
       </div>
     </div>
+    <section id="form-diagnosa">
+      <Form />
+    </section>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import Form from "@/components/form";
 export default {
   components: {
-    Logo
+    Form
   }
-}
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss" scoped>
+div#hero-header {
+  box-sizing: border-box;
+  background: #f8f8f8;
+  padding: 2em 4em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+
+  div#logo-header {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+
+    h1 {
+      text-transform: uppercase;
+      color: #f0134d;
+      font-size: 54px;
+    }
+  }
+
+  div#content-header {
+    p {
+      word-wrap: break-word;
+    }
+
+    button {
+      cursor: pointer;
+      background: #f0134d;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      padding: 8px;
+      font-weight: bold;
+
+      &:hover {
+        background: #222;
+      }
+    }
+  }
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+section#form-diagnosa {
+  padding: 8em;
 }
 </style>
