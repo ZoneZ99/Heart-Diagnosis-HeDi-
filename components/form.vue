@@ -49,17 +49,17 @@
       <div class="form-group">
         <label for="tingkat-kolesterol">Tingkat Kolesterol</label>
         <div id="tingkat-kolesterol" class="btn-level-group">
-          <input type="button" class="btn" v-bind:class="getColGood" value="Normal (< 200)" />
-          <input type="button" class="btn" v-bind:class="getColImportant" value="Sedang (200-239)" />
-          <input type="button" class="btn" v-bind:class="getColDanger" value="Tinggi (>240)" />
+          <button type="button" class="btn" v-on:click="ColGood" v-bind:class="{ 'good' : isColGood }">Normal (< 200) </button>
+          <button type="button" class="btn" v-on:click="ColImportant" v-bind:class="{ 'good important': isColImportant }" >Sedang (200-239)</button>
+          <button type="button" class="btn" v-on:click="ColDanger" v-bind:class="{ 'good important danger': isColDanger }" >Tinggi (>240)</button>
         </div>
       </div>
       <div class="form-group">
         <label for="tingkat-glukosa">Tingkat Glukosa (2 jam setelah makan)</label>
         <div id="tingkat-glukosa" class="btn-level-group">
-          <input type="button" class="btn" v-bind:class="getGluGood" value="Normal (< 120)" />
-          <input type="button" class="btn" v-bind:class="getGluImportant" value="Sedang (140-199)" />
-          <input type="button" class="btn" v-bind:class="getGluDanger" value="Tinggi (>200)" />
+          <button type="button" class="btn" v-on:click="GluGood" v-bind:class="{ 'good': isGluGood }">Normal (< 120)</button>
+          <button type="button" class="btn" v-on:click="GluImportant" v-bind:class="{ 'good important': isGluImportant }">Sedang (140-199)</button>
+          <button type="button" class="btn" v-on:click="GluDanger" v-bind:class="{ 'good important danger': isGluDanger }">Tinggi (>200)</button>
         </div>
       </div>
       <div class="form-group">
@@ -84,47 +84,80 @@
 
 <script>
 export default {
-  data: {
-    isColDanger: false,
-    isColImportant: false,
-    isColGood: false
+  data() {
+    return {
+      isColGood: false,
+      isColImportant: false,
+      isColDanger: false,
+      isGluGood: false,
+      isGluImportant: false,
+      isGluDanger: false
+    }
   },
   methods: {
-    getColDanger() {
-      return {
-        good: true,
-        important: true,
-        danger: this.data["isGood"]
-      };
+    ColGood() {
+      if (this.isColGood) {
+        this.isColGood = true
+      } else {
+        this.isColGood = !this.isColGood
+      }
+        this.isColDanger = false
+        this.isColImportant = false
     },
-    getColImportant() {
-      return {
-        good: true,
-        important: !this.data["isImportant"]
-      };
+    ColImportant() {
+      if (!this.isColGood) {
+        this.isColGood = true
+      }
+      if (this.isColImportant) {
+        this.isColImportant = true
+      } else {
+          this.isColImportant = !this.isColImportant
+          
+      }
+      this.isColDanger = false
     },
-    getGluGood() {
-      return {
-        good: true
-      };
+    ColDanger() {
+      if (!this.isColImportant) {
+        this.isColGood = true
+        this.isColImportant = true
+      } 
+      if (this.isColDanger) {
+        this.isColDanger = true
+      } else {
+        this.isColDanger = !this.isColDanger
+      }
     },
-    getGluDanger() {
-      return {
-        good: true,
-        important: true,
-        danger: !this.data["isGood"]
-      };
+    GluGood() {
+      if (this.isGluGood) {
+        this.isGluGood = true
+      } else {
+        this.isGluGood = !this.isGluGood
+      }
+        this.isGluDanger = false
+        this.isGluImportant = false
     },
-    getGluImportant() {
-      return {
-        good: true,
-        imortant: !this.data["isImportant"]
-      };
+    GluImportant() {
+      if (!this.isGluGood) {
+        this.isGluGood = true
+      }
+      if (this.isGluImportant) {
+        this.isGluImportant = true
+      } else {
+          this.isGluImportant = !this.isGluImportant
+          
+      }
+      this.isGluDanger = false
     },
-    getGluGood() {
-      return {
-        good: true
-      };
+    GluDanger() {
+      if (!this.isGluImportant) {
+        this.isGluGood = true
+        this.isGluImportant = true
+      } 
+      if (this.isGluDanger) {
+        this.isGluDanger = true
+      } else {
+        this.isGluDanger = !this.isGluDanger
+      }
     }
   }
 };
@@ -138,7 +171,6 @@ div#form-diagnosa {
   }
 }
 form {
-  width: 500px;
 
   p {
     margin: 0;
@@ -253,11 +285,10 @@ form {
 div#button-group {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   margin-top: 30px;
 
   .btn {
-    margin-left: 10px;
+    margin-right: 10px;
     font-weight: 600;
     border-radius: 2px;
   }

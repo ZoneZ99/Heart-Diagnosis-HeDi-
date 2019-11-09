@@ -30,12 +30,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and ( max-width: 800px ) {
+  section#form-diagnosa {
+    padding: 2em !important;
+  }
+
+  div#hero-header {
+    padding: 2em !important;
+    display: grid;
+    grid-template-columns: 100% !important;
+  }
+}
+
 div#hero-header {
   box-sizing: border-box;
   background: #f8f8f8;
   padding: 2em 4em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: 25% 75%;
 
   div#logo-header {
     display: flex;
@@ -72,5 +84,9 @@ div#hero-header {
 
 section#form-diagnosa {
   padding: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 </style>
