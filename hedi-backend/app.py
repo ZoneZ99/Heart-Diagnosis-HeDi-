@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 from dotenv import load_dotenv, find_dotenv
@@ -8,6 +9,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 app = Flask(__name__)
+CORS(app)
 
 app.config.from_object(os.getenv('APP_SETTINGS'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
