@@ -2,15 +2,18 @@
   <div>
     <Nav />
     <nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Nav from "./partials/Nav";
+import Footer from "./partials/Footer";
 
 export default {
   components: {
-    Nav
+    Nav,
+    Footer
   }
 };
 </script>

@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and ( max-width: 800px ) {
+@media only screen and (max-width: 800px) {
   section#form-diagnosa {
     padding: 2em !important;
   }
@@ -39,6 +39,14 @@ export default {
     padding: 2em !important;
     display: grid;
     grid-template-columns: 100% !important;
+
+    div#logo-header {
+      margin-top: 0 !important;
+      margin-right: 0 !important;
+      display: flex;
+      align-items: center !important;
+      justify-content: center !important;
+    }
   }
 }
 
@@ -51,8 +59,10 @@ div#hero-header {
 
   div#logo-header {
     display: flex;
-    justify-content: center;
-    padding-top: 2em;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-top: 1.5em;
+    margin-right: 2em;
 
     h1 {
       text-transform: uppercase;
@@ -64,6 +74,7 @@ div#hero-header {
   div#content-header {
     p {
       word-wrap: break-word;
+      text-align: justify;
     }
 
     button {
@@ -88,5 +99,4 @@ section#form-diagnosa {
   justify-content: center;
   align-items: center;
 }
-
 </style>
