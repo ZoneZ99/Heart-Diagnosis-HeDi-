@@ -5,126 +5,224 @@
       <div class="form-group">
         <label for="nama-panjang">Nama Panjang</label>
         <div>
-          <input id="nama-panjang" type="text" />
+          <input v-model="form['nama']" id="nama-panjang" type="text" />
         </div>
       </div>
       <div class="form-group">
         <label for="jenis-kelamin">Jenis Kelamin</label>
         <div>
-          <select name="gender" id="jenis-kelamin" aria-placeholder="Pilih Jenis Kelamin . . .">
+          <select
+            name="gender"
+            v-model="form['jenisKelamin']"
+            id="jenis-kelamin"
+            aria-placeholder="Pilih Jenis Kelamin . . ."
+          >
             <option value>Pilih Jenis Kelamin...</option>
-            <option value="0">Laki-Laki</option>
-            <option value="0">Perempuan</option>
+            <option value="1">Laki-Laki</option>
+            <option value="2">Perempuan</option>
           </select>
         </div>
       </div>
       <div class="form-group">
-        <label for="umur">Umur</label>
-        <div id="umur" class="row">
-          <input type="text" />
+        <label for="tglLahir">Tanggal Lahir</label>
+        <div id="tglLahir" class="row">
+          <input v-model="form['tanggalLahir']" type="date" />
           <p class="format">tahun</p>
         </div>
       </div>
       <div class="form-group">
         <label for="tinggi-badan">Tinggi Badan</label>
         <div id="tinggi-badan" class="row">
-          <input type="text" />
+          <input v-model="form['tinggiBadan']" type="text" />
           <p class="format">cm</p>
         </div>
       </div>
       <div class="form-group">
         <label for="berat-badan">Berat Badan</label>
         <div class="row">
-          <input type="text" />
+          <input v-model="form['beratBadan']" type="text" />
           <p class="format">Kg</p>
         </div>
       </div>
       <div class="form-group">
         <label for="tekanan-sistolik">Tekanan Sistolik</label>
         <div id="tekanan-sistolik" class="row">
-          <input type="text" />
+          <input v-model="form['tekananSistolik']" type="text" />
           <p class="format">mmHg</p>
         </div>
       </div>
       <div class="form-group">
         <label for="tingkat-kolesterol">Tingkat Kolesterol</label>
         <div id="tingkat-kolesterol" class="btn-level-group">
-          <input type="button" class="btn" v-bind:class="getColGood" value="Normal (< 200)" />
-          <input type="button" class="btn" v-bind:class="getColImportant" value="Sedang (200-239)" />
-          <input type="button" class="btn" v-bind:class="getColDanger" value="Tinggi (>240)" />
+          <button
+            type="button"
+            class="btn"
+            v-on:click="ColGood"
+            v-bind:class="{ 'good' : isColGood }"
+          >Normal (< 200)</button>
+          <button
+            type="button"
+            class="btn"
+            v-on:click="ColImportant"
+            v-bind:class="{ 'good important': isColImportant }"
+          >Sedang (200-239)</button>
+          <button
+            type="button"
+            class="btn"
+            v-on:click="ColDanger"
+            v-bind:class="{ 'good important danger': isColDanger }"
+          >Tinggi (>240)</button>
         </div>
       </div>
       <div class="form-group">
         <label for="tingkat-glukosa">Tingkat Glukosa (2 jam setelah makan)</label>
         <div id="tingkat-glukosa" class="btn-level-group">
-          <input type="button" class="btn" v-bind:class="getGluGood" value="Normal (< 120)" />
-          <input type="button" class="btn" v-bind:class="getGluImportant" value="Sedang (140-199)" />
-          <input type="button" class="btn" v-bind:class="getGluDanger" value="Tinggi (>200)" />
+          <button
+            type="button"
+            class="btn"
+            v-on:click="GluGood"
+            v-bind:class="{ 'good': isGluGood }"
+          >Normal (< 120)</button>
+          <button
+            type="button"
+            class="btn"
+            v-on:click="GluImportant"
+            v-bind:class="{ 'good important': isGluImportant }"
+          >Sedang (140-199)</button>
+          <button
+            type="button"
+            class="btn"
+            v-on:click="GluDanger"
+            v-bind:class="{ 'good important danger': isGluDanger }"
+          >Tinggi (>200)</button>
         </div>
       </div>
       <div class="form-group">
-        <input type="checkbox" name="olahraga" id="olahraga" />
+        <input type="checkbox" v-model="form['isOlahraga']" name="olahraga" id="olahraga" />
         <label for="olahraga">Apakah kamu sering olah raga ?</label>
       </div>
       <div class="form-group">
-        <input type="checkbox" name="olahraga" id="olahraga" />
-        <label for="olahraga">Apakah kamu seorang perokok aktif ?</label>
+        <input type="checkbox" v-model="form['isMerokok']" name="perokok" id="olahraga" />
+        <label for="perokok">Apakah kamu seorang perokok aktif ?</label>
       </div>
       <div class="form-group">
-        <input type="checkbox" name="olahraga" id="olahraga" />
-        <label for="olahraga">Apakah kamu seorang pecandu alkohol ?</label>
+        <input type="checkbox" v-model="form['isPeminum']" name="peminum" id="olahraga" />
+        <label for="peminum">Apakah kamu seorang pecandu alkohol ?</label>
       </div>
       <div id="button-group">
-        <button class="btn cancel">Batal</button>
-        <button type="submit" class="btn success">Diagnosa</button>
+        <button v-on:click="cancelForm" class="btn cancel">Batal</button>
+        <button type="submit" v-on:click="submitForm" class="btn success">Diagnosa</button>
       </div>
     </form>
+    <p>{{ result }}</p>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data: {
-    isColDanger: false,
-    isColImportant: false,
-    isColGood: false
+  data() {
+    return {
+      form: {
+        nama: "",
+        jenisKelamin: "",
+        tanggalLahir: "",
+        beratBadan: "",
+        tinggiBadan: "",
+        tekananSistolik: "",
+        tingkatKolesterol: "normal",
+        tingkatGlukosa: "normal",
+        isOlahraga: false,
+        isMerokok: false,
+        isPeminum: false
+      },
+      result: "",
+      isColGood: true,
+      isColImportant: false,
+      isColDanger: false,
+      isGluGood: true,
+      isGluImportant: false,
+      isGluDanger: false
+    };
   },
   methods: {
-    getColDanger() {
-      return {
-        good: true,
-        important: true,
-        danger: this.data["isGood"]
-      };
+    submitForm() {
+      event.preventDefault();
+      axios
+        .post("http://hedi-backend.herokuapp.com/result/", this.form)
+        .then(response => {
+          this.result = response.data;
+        });
     },
-    getColImportant() {
-      return {
-        good: true,
-        important: !this.data["isImportant"]
-      };
+    cancelForm() {},
+    ColGood() {
+      if (this.isColGood) {
+        this.isColGood = true;
+      } else {
+        this.isColGood = !this.isColGood;
+      }
+      this.isColDanger = false;
+      this.isColImportant = false;
+      this.form.tingkatKolesterol = "normal";
     },
-    getGluGood() {
-      return {
-        good: true
-      };
+    ColImportant() {
+      if (!this.isColGood) {
+        this.isColGood = true;
+      }
+      if (this.isColImportant) {
+        this.isColImportant = true;
+      } else {
+        this.isColImportant = !this.isColImportant;
+      }
+      this.isColDanger = false;
+      this.form.tingkatKolesterol = "sedang";
     },
-    getGluDanger() {
-      return {
-        good: true,
-        important: true,
-        danger: !this.data["isGood"]
-      };
+    ColDanger() {
+      if (!this.isColImportant) {
+        this.isColGood = true;
+        this.isColImportant = true;
+      }
+      if (this.isColDanger) {
+        this.isColDanger = true;
+      } else {
+        this.isColDanger = !this.isColDanger;
+      }
+      this.form.tingkatKolesterol = "tinggi";
     },
-    getGluImportant() {
-      return {
-        good: true,
-        imortant: !this.data["isImportant"]
-      };
+    GluGood() {
+      if (this.isGluGood) {
+        this.isGluGood = true;
+      } else {
+        this.isGluGood = !this.isGluGood;
+      }
+      this.isGluDanger = false;
+      this.isGluImportant = false;
+      this.form.tingkatGlukosa = "normal";
     },
-    getGluGood() {
-      return {
-        good: true
-      };
+    GluImportant() {
+      if (!this.isGluGood) {
+        this.isGluGood = true;
+      }
+      if (this.isGluImportant) {
+        this.isGluImportant = true;
+      } else {
+        this.isGluImportant = !this.isGluImportant;
+      }
+      this.isGluDanger = false;
+      this.form.tingkatGlukosa = "sedang";
+    },
+    GluDanger() {
+      if (!this.isGluImportant) {
+        this.isGluGood = true;
+        this.isGluImportant = true;
+      }
+      if (this.isGluDanger) {
+        this.isGluDanger = true;
+      } else {
+        this.isGluDanger = !this.isGluDanger;
+        this.form.tingkatGlukosa = "tinggi";
+      }
     }
   }
 };
@@ -138,8 +236,6 @@ div#form-diagnosa {
   }
 }
 form {
-  width: 500px;
-
   p {
     margin: 0;
     margin-block: 0;
@@ -253,11 +349,10 @@ form {
 div#button-group {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   margin-top: 30px;
 
   .btn {
-    margin-left: 10px;
+    margin-right: 10px;
     font-weight: 600;
     border-radius: 2px;
   }

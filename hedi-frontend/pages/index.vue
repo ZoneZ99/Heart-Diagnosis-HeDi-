@@ -22,6 +22,7 @@
 
 <script>
 import Form from "@/components/form";
+
 export default {
   components: {
     Form
@@ -30,17 +31,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and (max-width: 800px) {
+  section#form-diagnosa {
+    padding: 2em !important;
+  }
+
+  div#hero-header {
+    padding: 2em !important;
+    display: grid;
+    grid-template-columns: 100% !important;
+
+    div#logo-header {
+      margin-top: 0 !important;
+      margin-right: 0 !important;
+      display: flex;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
 div#hero-header {
   box-sizing: border-box;
   background: #f8f8f8;
   padding: 2em 4em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: 25% 75%;
 
   div#logo-header {
     display: flex;
-    justify-content: center;
-    padding-top: 2em;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-top: 1.5em;
+    margin-right: 2em;
 
     h1 {
       text-transform: uppercase;
@@ -52,6 +75,7 @@ div#hero-header {
   div#content-header {
     p {
       word-wrap: break-word;
+      text-align: justify;
     }
 
     button {
@@ -72,5 +96,8 @@ div#hero-header {
 
 section#form-diagnosa {
   padding: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
