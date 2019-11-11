@@ -150,7 +150,7 @@ export default {
     submitForm() {
       event.preventDefault();
       axios
-        .post("http://hedi-backend.herokuapp.com/result/", this.form)
+        .post("https://hedi-backend.herokuapp.com/result/", this.form)
         .then(response => {
           this.result = response.data;
         });
