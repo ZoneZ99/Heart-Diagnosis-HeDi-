@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 
 from dotenv import load_dotenv, find_dotenv
@@ -24,6 +24,7 @@ def hello_world():
 
 
 @app.route("/result/", methods=['POST'])
+@cross_origin()
 def result():
     payload = request.get_json()
     return jsonify(payload)
