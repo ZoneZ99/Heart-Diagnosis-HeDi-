@@ -24,7 +24,6 @@ def hello_world():
 
 
 @app.route("/result/", methods=['POST'])
-@cross_origin()
 def result():
     payload = request.get_json()
     return jsonify(payload)
