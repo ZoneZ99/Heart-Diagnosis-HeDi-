@@ -32,10 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 @media only screen and (max-width: 800px) {
-  section#form-diagnosa {
-    padding: 2em !important;
-  }
-
   div#hero-header {
     padding: 2em !important;
     display: grid;
@@ -95,7 +91,6 @@ div#hero-header {
 }
 
 section#form-diagnosa {
-  padding: 8em;
   display: flex;
   justify-content: center;
   align-items: center;
