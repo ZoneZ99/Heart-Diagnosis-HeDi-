@@ -3,51 +3,58 @@
     <h1 id="title-form-diagnosa">Form Diagnosa Penyakit Jantung</h1>
     <form method="post">
       <div class="form-group">
-        <label for="nama-panjang">Nama Panjang</label>
+        <label for="namaPanjang">Nama Panjang</label>
         <div>
-          <input v-model="form['nama']" id="nama-panjang" type="text" />
+          <input v-model="form['nama']" id="namaPanjang" type="text" />
         </div>
       </div>
       <div class="form-group">
-        <label for="jenis-kelamin">Jenis Kelamin</label>
+        <label for="jenisKelamin">Jenis Kelamin</label>
         <div>
           <select
             name="gender"
             v-model="form['jenisKelamin']"
-            id="jenis-kelamin"
+            id="jenisKelamin"
             aria-placeholder="Pilih Jenis Kelamin . . ."
           >
             <option value>Pilih Jenis Kelamin...</option>
-            <option value="1">Laki-Laki</option>
-            <option value="2">Perempuan</option>
+            <option value="1">Perempuan</option>
+            <option value="2">Laki-Laki</option>
           </select>
         </div>
       </div>
       <div class="form-group">
         <label for="tglLahir">Tanggal Lahir</label>
-        <div id="tglLahir" class="row">
-          <input v-model="form['tanggalLahir']" type="date" />
+        <div class="row">
+          <input id="tglLahir" v-model="form['tanggalLahir']" type="date" />
           <p class="format">tahun</p>
         </div>
       </div>
       <div class="form-group">
-        <label for="tinggi-badan">Tinggi Badan</label>
-        <div id="tinggi-badan" class="row">
-          <input v-model="form['tinggiBadan']" type="text" />
+        <label for="tinggiBadan">Tinggi Badan</label>
+        <div class="row">
+          <input id="tinggiBadan" v-model="form['tinggiBadan']" type="text" />
           <p class="format">cm</p>
         </div>
       </div>
       <div class="form-group">
         <label for="berat-badan">Berat Badan</label>
         <div class="row">
-          <input v-model="form['beratBadan']" type="text" />
+          <input id="beratBadan" v-model="form['beratBadan']" type="text" />
           <p class="format">Kg</p>
         </div>
       </div>
       <div class="form-group">
-        <label for="tekanan-sistolik">Tekanan Sistolik</label>
-        <div id="tekanan-sistolik" class="row">
-          <input v-model="form['tekananSistolik']" type="text" />
+        <label for="tekananSistolik">Tekanan Sistolik</label>
+        <div class="row">
+          <input id="tekananSistolik" v-model="form['tekananSistolik']" type="text" />
+          <p class="format">mmHg</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tekananSistolik">Tekanan Diastolik</label>
+        <div class="row">
+          <input id="tekananDiastolik" v-model="form['tekananDiastolik']" type="text" />
           <p class="format">mmHg</p>
         </div>
       </div>
@@ -128,9 +135,10 @@ export default {
         nama: "",
         jenisKelamin: "",
         tanggalLahir: "",
-        beratBadan: "",
-        tinggiBadan: "",
-        tekananSistolik: "",
+        beratBadan: 0,
+        tinggiBadan: 0,
+        tekananSistolik: 0,
+        tekananDiastolik: 0,
         tingkatKolesterol: "normal",
         tingkatGlukosa: "normal",
         isOlahraga: false,
@@ -230,11 +238,14 @@ export default {
 
 <style lang="scss" scoped>
 div#form-diagnosa {
+  padding: 2em;
+
   h1#title-form-diagnosa {
     font-size: 32px;
     padding-bottom: 1em;
   }
 }
+
 form {
   p {
     margin: 0;
@@ -242,6 +253,26 @@ form {
   }
   .form-group {
     margin-top: 20px;
+
+    input#namaPanjang {
+      width: 15em;
+    }
+
+    input#tinggiBadan {
+      width: 2em;
+    }
+
+    input#beratBadan {
+      width: 2em;
+    }
+
+    input#tekananSistolik {
+      width: 2em;
+    }
+
+    input#tekananDiastolik {
+      width: 2em;
+    }
 
     div.btn-level-group {
       display: flex;
