@@ -1,10 +1,9 @@
 import os
 
-from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
-from flask_sqlalchemy import SQLAlchemy
-
 from dotenv import load_dotenv, find_dotenv
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv(find_dotenv())
 
@@ -15,6 +14,8 @@ app.config.from_object(os.getenv('APP_SETTINGS'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+from helper import DiagnosisRequest
+from decision_tree import DecisionTreeClassifier
 from models import DecisionTree
 
 
@@ -26,7 +27,16 @@ def hello_world():
 @app.route("/result/", methods=['POST'])
 def result():
     payload = request.get_json()
-    return jsonify(payload)
+    diagnosis_data = DiagnosisRequest(payload)
+    x_test = diagnosis_data.to_np_array()
+
+    tree_model = DecisionTree.query.order_by(DecisionTree.id.desc()).first()
+    decision_tree = tree_model.tree['tree']
+    tree_classifier = DecisionTreeClassifier(initial_tree=decision_tree)
+
+    prediction = tree_classifier.predict(x_test)
+    response = {'result': prediction.tolist()[0]}
+    return jsonify(response)
 
 
 @app.route("/add-tree/", methods=['POST'])
