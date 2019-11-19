@@ -139,8 +139,8 @@ export default {
         tinggiBadan: 0,
         tekananSistolik: 0,
         tekananDiastolik: 0,
-        tingkatKolesterol: "normal",
-        tingkatGlukosa: "normal",
+        tingkatKolesterol: 1,
+        tingkatGlukosa: 1,
         isOlahraga: false,
         isMerokok: false,
         isPeminum: false
@@ -172,7 +172,7 @@ export default {
       }
       this.isColDanger = false;
       this.isColImportant = false;
-      this.form.tingkatKolesterol = "normal";
+      this.form.tingkatKolesterol = 1;
     },
     ColImportant() {
       if (!this.isColGood) {
@@ -184,7 +184,7 @@ export default {
         this.isColImportant = !this.isColImportant;
       }
       this.isColDanger = false;
-      this.form.tingkatKolesterol = "sedang";
+      this.form.tingkatKolesterol = 2;
     },
     ColDanger() {
       if (!this.isColImportant) {
@@ -196,7 +196,7 @@ export default {
       } else {
         this.isColDanger = !this.isColDanger;
       }
-      this.form.tingkatKolesterol = "tinggi";
+      this.form.tingkatKolesterol = 3;
     },
     GluGood() {
       if (this.isGluGood) {
@@ -206,7 +206,7 @@ export default {
       }
       this.isGluDanger = false;
       this.isGluImportant = false;
-      this.form.tingkatGlukosa = "normal";
+      this.form.tingkatGlukosa = 1;
     },
     GluImportant() {
       if (!this.isGluGood) {
@@ -218,7 +218,7 @@ export default {
         this.isGluImportant = !this.isGluImportant;
       }
       this.isGluDanger = false;
-      this.form.tingkatGlukosa = "sedang";
+      this.form.tingkatGlukosa = 2;
     },
     GluDanger() {
       if (!this.isGluImportant) {
@@ -229,7 +229,7 @@ export default {
         this.isGluDanger = true;
       } else {
         this.isGluDanger = !this.isGluDanger;
-        this.form.tingkatGlukosa = "tinggi";
+        this.form.tingkatGlukosa = 3;
       }
     }
   }
