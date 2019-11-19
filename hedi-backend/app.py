@@ -31,7 +31,7 @@ def result():
     x_test = diagnosis_data.to_np_array()
 
     tree_model = DecisionTree.query.order_by(DecisionTree.id.desc()).first()
-    decision_tree = tree_model.tree['tree']
+    decision_tree = tree_model.tree
     tree_classifier = DecisionTreeClassifier(initial_tree=decision_tree)
 
     prediction = tree_classifier.predict(x_test)
