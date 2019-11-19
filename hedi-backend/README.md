@@ -8,5 +8,5 @@ HeDi (Heart Diagnosis) adalah aplikasi berbasis web yang bertujuan untuk mendiag
 - Teknik : Decision Tree Learning (DTL)
 
 ## Teknologi
-- Client : HTML, CSS, Nuxt Framework
+- Client : HTML, CSS, Angular Framework
 - Server : Flask Framework dengan library-library Python pendukung
