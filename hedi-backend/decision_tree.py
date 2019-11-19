@@ -114,7 +114,7 @@ class DecisionTreeClassifier:
 
     def _get_prediction(self, row):
         current_layer = self.trees
-        while current_layer and current_layer.get('cutoff'):
+        while current_layer and hasattr(current_layer, 'cutoff'):
             if row[current_layer['index_col']] < current_layer['cutoff']:
                 if current_layer['left']:
                     current_layer = current_layer['left']
