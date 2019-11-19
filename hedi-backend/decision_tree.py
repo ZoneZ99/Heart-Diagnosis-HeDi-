@@ -77,7 +77,7 @@ class DecisionTreeClassifier:
         return all(x == items[0] for x in items)
 
     def fit_and_prune(self, feature_set, target_variable, parent_node={}, depth=0):
-        self.fit(self, feature_set, target_variable, parent_node, depth)
+        self.fit(feature_set, target_variable, parent_node, depth)
         self.prune(self.trees)
 
     def fit(self, feature_set, target_variable, parent_node={}, depth=0):
@@ -130,7 +130,7 @@ class DecisionTreeClassifier:
                 current_node = current_node['right']
         return current_node['val']
 
-    def can_be_added_to_queue(tree):
+    def can_be_added_to_queue(self, tree):
         has_children = tree.get('left') is not None or tree.get('right') is not None
         has_sub_trees = not tree.get('left')['IsLeafNode'] and not tree.get('right')['IsLeafNode']
         return tree is not None and has_children and has_sub_trees
