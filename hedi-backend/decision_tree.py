@@ -35,8 +35,17 @@ def get_entropy(y_predict, y_real):
 
 class DecisionTreeClassifier:
 
-    def __init__(self, dataset, max_depth):
-        self.dataset = dataset
+    def __init__(self, dataset=None, max_depth=0, initial_tree=None):
+        if initial_tree is None:
+            self.trees = {}
+        else:
+            self.trees = initial_tree
+
+        if dataset is None:
+            self.dataset = DatasetContainer()
+        else:
+            self.dataset = dataset
+
         self.depth = 0
         self.max_depth = max_depth
 
