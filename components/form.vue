@@ -121,7 +121,20 @@
         <button type="submit" v-on:click="submitForm" class="btn success">Diagnosa</button>
       </div>
     </form>
-    <p>{{ result }}</p>
+    <div class="v-flex-center">
+      <div id="result" v-if="result">
+        <p id="description">
+          Hasil diagnosa menunjukkan bahwa
+          <br />
+          <strong>{{ form.nama }}</strong>
+        </p>
+        <h1 class="result-str good" v-if="result === 1">Terindikasi</h1>
+        <h1 class="result-str bad" v-else-if="result === 0">Tidak Terindikasi</h1>
+        <p>
+          <strong>Penyakit Jantung</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -160,7 +173,7 @@ export default {
       axios
         .post("https://hedi-backend.herokuapp.com/result/", this.form)
         .then(response => {
-          this.result = response.data;
+          this.result = response.data.result;
         });
     },
     cancelForm() {},
@@ -293,18 +306,6 @@ form {
         }
       }
 
-      .good {
-        background: #32dbc6;
-      }
-
-      .important {
-        background: #f6d365;
-      }
-
-      .danger {
-        background: #f0134d;
-      }
-
       input {
         height: 15px;
         line-height: 15px;
@@ -355,6 +356,28 @@ form {
   color: #222;
   cursor: pointer;
   background: #eee;
+
+  &.good {
+    background: #32dbc6;
+  }
+
+  &.important {
+    background: #f6d365;
+  }
+
+  &.danger {
+    background: #f0134d;
+  }
+}
+
+h1 {
+  .good {
+    color: #32dbc6;
+  }
+
+  .bad {
+    color: #f0134d;
+  }
 }
 
 .success {
@@ -387,5 +410,20 @@ div#button-group {
     font-weight: 600;
     border-radius: 2px;
   }
+}
+
+div.v-flex-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div#result {
+  margin: 2em;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1em;
+  text-align: center;
 }
 </style>
