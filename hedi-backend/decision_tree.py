@@ -74,13 +74,24 @@ class DecisionTreeClassifier:
         elif len(target_variable) == 0:
             return None
         elif self.all_same(target_variable):
+<<<<<<< HEAD
             return {'val': target_variable[0].item()}
+=======
+            return {'val': target_variable[0],
+                    'Positive(1)': list(target_variable).count(1),
+                    'Negative(0)': list(target_variable).count(0),
+                    'IsLeafNode': True}
+>>>>>>> 8465a7419f410a8909f69a7e5c24a2ccfcb6b7c8
         elif depth >= self.max_depth:
-            return None
+            return {'Positive(1)': list(target_variable).count(1),
+                    'Negative(0)': list(target_variable).count(0),
+                    'IsLeafNode': True,
+                    'val': 0 if list(target_variable).count(0) > list(target_variable).count(1) else 1}
         else:
             column, cutoff, entropy = self.find_best_split_of_all(feature_set, target_variable)
             y_left = target_variable[feature_set[:, column] < cutoff]
             y_right = target_variable[feature_set[:, column] >= cutoff]
+<<<<<<< HEAD
             parent_node = {
                 'col': self.dataset.feature_names[column],
                 'index_col': column,
@@ -91,6 +102,18 @@ class DecisionTreeClassifier:
                 'left': self.fit(feature_set[feature_set[:, column] < cutoff], y_left, {}, depth + 1),
                 'right': self.fit(feature_set[feature_set[:, column] >= cutoff], y_right, {}, depth + 1)
             }
+=======
+            parent_node = {'col': self.dataset.feature_names[column],
+                           'index_col': column,
+                           'cutoff': cutoff,
+                           'Positive(1)': list(target_variable).count(1),
+                           'Negative(0)':list(target_variable).count(0),
+                           'val': np.round(np.mean(target_variable)),
+                           'IsLeafNode': False,
+                           'left': self.fit(feature_set[feature_set[:, column] < cutoff], y_left, {}, depth+1),
+                           'right': self.fit(feature_set[feature_set[:, column] >= cutoff], y_right, {}, depth+1)
+                           }
+>>>>>>> 8465a7419f410a8909f69a7e5c24a2ccfcb6b7c8
             self.depth += 1
             self.trees = parent_node
             return parent_node
@@ -104,19 +127,15 @@ class DecisionTreeClassifier:
         return results
 
     def _get_prediction(self, row):
-        current_layer = self.trees
-        while current_layer and current_layer.get('cutoff'):
-            if row[current_layer['index_col']] < current_layer['cutoff']:
-                if current_layer['left']:
-                    current_layer = current_layer['left']
-                else:
-                    break
+        current_node = self.trees
+        while (current_node and current_node['IsLeafNode'] is False):
+            index = current_node['index_col']
+            if row[index] <= current_node['cutoff']:
+                current_node = current_node['left']
             else:
-                if current_layer['right']:
-                    current_layer = current_layer['right']
-                else:
-                    break
-        return current_layer.get('val')
+                current_node = current_node['right']
+        return current_node['val']
+
 
 
 def can_be_added_to_queue(tree):
