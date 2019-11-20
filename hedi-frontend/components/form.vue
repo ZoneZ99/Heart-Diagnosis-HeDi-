@@ -122,7 +122,7 @@
       </div>
     </form>
     <div class="v-flex-center">
-      <div id="result" v-if="result">
+      <div id="result" v-if="result !== ''">
         <p id="description">
           Hasil diagnosa menunjukkan bahwa
           <br />

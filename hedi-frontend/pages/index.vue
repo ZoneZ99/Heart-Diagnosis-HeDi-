@@ -14,6 +14,9 @@
         </a>
       </div>
     </div>
+    <div id="news-section">
+      <News />
+    </div>
     <section id="form-diagnosa">
       <Form />
     </section>
@@ -22,10 +25,12 @@
 
 <script>
 import Form from "@/components/form";
+import News from "@/components/news";
 
 export default {
   components: {
-    Form
+    Form,
+    News
   }
 };
 </script>
@@ -94,5 +99,11 @@ section#form-diagnosa {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+div#news-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
