@@ -14,12 +14,12 @@
         </a>
       </div>
     </div>
-    <div id="news-section">
-      <News />
-    </div>
     <section id="form-diagnosa">
       <Form />
     </section>
+    <div id="news-section">
+      <News />
+    </div>
   </div>
 </template>
 
@@ -37,51 +37,38 @@ export default {
 
 <style lang="scss" scoped>
 @media only screen and (max-width: 700px) {
-  div#hero-header {
-    height: 85vh !important;
-    div#hero {
-      top: 5vh !important;
-      left: -30vw !important;
-      img {
-        max-width: 80% !important;
-      }
-    }
-  }
 
-  div#content-header {
-    position: absolute;
-    top: 45vh !important;
-    width: 80% !important;
+  div#hero-header {
+    grid-template-columns: 100% !important;
+
+    div#content-header {
+      padding: 0 2em 4em 2em !important;
+    }
   }
 }
 
 div#hero-header {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
   box-sizing: border-box;
-  height: 70vh;
 
   div#hero {
-    position: absolute;
-    top: 5vh;
-    left: -8vw;
-    z-index: -1;
-
+    display: flex;
+    margin-top: 2em;
+    margin-left: -8em;
+    width: 100%;
     img {
-      background-size: cover;
-      max-height: 80vh;
-      max-width: 50vw;
+      max-height: 60vh;
+      max-width: 100vw;
     }
-
   }
 
   div#content-header {
-    float: right;
-    margin: 5em;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    width: 30%;
+    padding: 0 4em 0 6em;
 
     p {
       word-wrap: break-word;
