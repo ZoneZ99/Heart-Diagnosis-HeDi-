@@ -49,8 +49,6 @@ div.container {
   width: 100%;
   padding: 2em;
   display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: scroll;
 
   &::-webkit-scrollbar {
