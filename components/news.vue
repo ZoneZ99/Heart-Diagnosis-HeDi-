@@ -47,15 +47,21 @@ export default {
 <style lang="scss" scoped>
 div.container {
   width: 100%;
-  display: grid;
   padding: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
 
   div.card {
     box-sizing: border-box;
     border-radius: 10px;
-    background: linear-gradient(45deg, #ffd9a0, #ff0062);
-    height: 100%;
+    min-width: 250px;
+    height: 320px;
     margin: 0 1em;
     padding: 20px;
 
