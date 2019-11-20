@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div id="hero-header" class="grid-2">
-      <div id="logo-header">
-        <h1>hedi</h1>
+    <div id="hero-header">
+      <div id="hero">
+        <img src="~/assets/hero-header.png" alt="hero-header">
       </div>
       <div id="content-header">
         <p>Penyakit kardiovaskular menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.</p>
@@ -36,44 +36,53 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
   div#hero-header {
-    padding: 2em !important;
-    display: grid;
-    grid-template-columns: 100% !important;
-
-    div#logo-header {
-      margin-top: 0 !important;
-      margin-right: 0 !important;
-      display: flex;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-  }
-}
-
-div#hero-header {
-  box-sizing: border-box;
-  background: #f8f8f8;
-  padding: 2em 4em;
-  display: grid;
-  grid-template-columns: 25% 75%;
-
-  div#logo-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    margin-top: 1.5em;
-    margin-right: 2em;
-
-    h1 {
-      text-transform: uppercase;
-      color: #f0134d;
-      font-size: 54px;
+    height: 85vh !important;
+    div#hero {
+      top: 5vh !important;
+      left: -30vw !important;
+      img {
+        max-width: 80% !important;
+      }
     }
   }
 
   div#content-header {
+    position: absolute;
+    top: 45vh !important;
+    width: 80% !important;
+  }
+}
+
+div#hero-header {
+  position: relative;
+  box-sizing: border-box;
+  height: 70vh;
+
+  div#hero {
+    position: absolute;
+    top: 5vh;
+    left: -8vw;
+    z-index: -1;
+
+    img {
+      background-size: cover;
+      max-height: 80vh;
+      max-width: 50vw;
+    }
+
+  }
+
+  div#content-header {
+    float: right;
+    margin: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 30%;
+
     p {
       word-wrap: break-word;
       text-align: justify;
