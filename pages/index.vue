@@ -42,6 +42,7 @@ export default {
     grid-template-columns: 100% !important;
 
     div#content-header {
+      margin-top: -2em;
       padding: 0 2em 4em 2em !important;
     }
   }
