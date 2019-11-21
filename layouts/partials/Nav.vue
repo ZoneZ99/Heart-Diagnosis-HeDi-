@@ -1,7 +1,10 @@
 <template>
   <header>
     <div id="logo-nav">
-      <nuxt-link id="title-nav" to="/"><img id="logo" src="~/assets/logo-hedi.png" alt="logo"><span>Hedi</span></nuxt-link>
+      <nuxt-link id="title-nav" to="/">
+        <img id="logo" src="~/assets/logo-hedi.png" alt="logo" />
+        <span>Hedi</span>
+      </nuxt-link>
     </div>
     <nav>
       <ul>
@@ -42,8 +45,7 @@ header {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 25% 75%;
-  background: white;
-  box-shadow: 10px 0.1px 10px #ddd;
+  background: rgba(255, 255, 255, 0.6);
 
   div#logo-nav {
     display: flex;

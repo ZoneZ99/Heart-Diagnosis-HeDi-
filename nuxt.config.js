@@ -19,7 +19,7 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css?family=Signika:400,700&display=swap"
+          "https://fonts.googleapis.com/css?family=Signika:300, 400,700&display=swap"
       }
     ]
   },
