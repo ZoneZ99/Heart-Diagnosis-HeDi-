@@ -20,9 +20,8 @@ def entropy_one_division(division):
     num_of_division = len(division)
     classess = set(division)
 
-    for clas in classess:
-        sum_entropy += sum(division == clas) * 1.0 / num_of_division * \
-                       entropy_calculation(sum(division == clas), sum(division != clas))
+    sum_entropy = entropy_calculation(sum(division == 0), sum(division != 0))
+
     return sum_entropy, num_of_division
 
 
