@@ -86,7 +86,6 @@ section#hedi-developer {
         background: #eee;
         clip-path: circle(50% at 50% 50%);
         margin-bottom: 2em;
-        z-index: -1;
       }
 
       p {

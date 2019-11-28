@@ -1,7 +1,10 @@
 <template>
   <header>
     <div id="logo-nav">
-      <nuxt-link id="title-nav" to="/">hedi</nuxt-link>
+      <nuxt-link id="title-nav" to="/">
+        <img id="logo" src="~/assets/logo-hedi.png" alt="logo" />
+        <span>Hedi</span>
+      </nuxt-link>
     </div>
     <nav>
       <ul>
@@ -38,11 +41,11 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 25% 75%;
-  background: white;
-  box-shadow: 10px 0.1px 10px #ddd;
+  background: rgba(255, 255, 255, 0.6);
 
   div#logo-nav {
     display: flex;
@@ -51,10 +54,20 @@ header {
 
     a {
       text-decoration: none;
-      color: #f0134d;
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+
+      span {
+        color: #f0134d;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 5px;
+      }
+
+      img#logo {
+        max-width: 24px;
+      }
     }
   }
 

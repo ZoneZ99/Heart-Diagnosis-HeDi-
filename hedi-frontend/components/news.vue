@@ -56,10 +56,10 @@ div.container {
   }
 
   div.card {
+
     box-sizing: border-box;
     border-radius: 10px;
     min-width: 250px;
-    height: 320px;
     margin: 0 1em;
     padding: 20px;
 
@@ -79,8 +79,15 @@ div.container {
     }
 
     a {
+      width: 100%;
+      height: 100%;
       color: black;
       text-decoration: none;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 10px #ddd;
+
     }
   }
 }

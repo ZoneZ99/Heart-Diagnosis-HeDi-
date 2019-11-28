@@ -1,25 +1,34 @@
 <template>
   <div>
-    <div id="hero-header" class="grid-2">
-      <div id="logo-header">
-        <h1>hedi</h1>
+    <section id="hero-header">
+      <div id="hero">
+        <img id="hero-img-header" src="~/assets/hero-header.png" alt="hero-header" />
+        <img id="bg-img-header" src="~/assets/bg-header.png" alt="bg-header" />
       </div>
       <div id="content-header">
-        <p>Penyakit kardiovaskular menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.</p>
-        <p>
-          <strong>Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI !</strong>
-        </p>
+        <h1 id="title-header">HEART DIAGNOSIS</h1>
+        <p class="text-muted">Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI!</p>
         <a href="#title-form-diagnosa">
           <button>Diagnosis Sekarang !</button>
         </a>
       </div>
-    </div>
-    <div id="news-section">
-      <News />
-    </div>
+    </section>
+    <section id="heart-disease-danger">
+      <div id="content-hdd">
+        <p>
+          <strong>Penyakit kardiovaskular</strong> menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.
+        </p>
+      </div>
+      <div id="hero-hdd">
+        <img id="svg-1" src="~/assets/svg-1.png" alt="hero-hdd" />
+      </div>
+    </section>
     <section id="form-diagnosa">
       <Form />
     </section>
+    <div id="news-section">
+      <News />
+    </div>
   </div>
 </template>
 
@@ -37,46 +46,103 @@ export default {
 
 <style lang="scss" scoped>
 @media only screen and (max-width: 800px) {
-  div#hero-header {
-    padding: 2em !important;
-    display: grid;
+  section#hero-header {
     grid-template-columns: 100% !important;
 
-    div#logo-header {
-      margin-top: 0 !important;
-      margin-right: 0 !important;
-      display: flex;
-      align-items: center !important;
-      justify-content: center !important;
+    div#content-header {
+      padding: 0 2em 4em 4em !important;
+    }
+  }
+
+  section#heart-disease-danger {
+    grid-template-columns: 100% !important;
+
+    div#hero-hdd {
+      img {
+        top: 120vh !important;
+        max-height: 50% !important;
+      }
     }
   }
 }
 
-div#hero-header {
-  box-sizing: border-box;
-  background: #f8f8f8;
-  padding: 2em 4em;
+section#heart-disease-danger {
+  height: 100vh;
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: repeat(2, 50%);
 
-  div#logo-header {
+  div#content-hdd {
+    height: 100%;
+    padding-left: 4em;
+    padding-right: 2em;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    margin-top: 1.5em;
-    margin-right: 2em;
+    flex-direction: column;
+    justify-content: center;
 
-    h1 {
-      text-transform: uppercase;
-      color: #f0134d;
-      font-size: 54px;
+    p {
+      font-size: 24px;
+    }
+  }
+
+  div#hero-hdd {
+    img {
+      max-height: 80%;
+    }
+
+    img#svg-1 {
+      position: absolute;
+      z-index: -1;
+      top: 80vh;
+      right: -10vw;
+    }
+  }
+}
+
+section#hero-header {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  box-sizing: border-box;
+
+  div#hero {
+    display: flex;
+    padding-top: 2em;
+    margin-left: -4em;
+    width: 100%;
+
+    img#hero-img-header {
+      max-height: 65vh;
+      max-width: 100vw;
+    }
+
+    img#bg-img-header {
+      position: absolute;
+      max-height: 90%;
+      max-width: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   }
 
   div#content-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 4em 0 6em;
+    text-align: right;
+
+    h1 {
+      font-size: 54px;
+    }
+
     p {
       word-wrap: break-word;
-      text-align: justify;
+    }
+
+    .text-muted {
+      font-weight: 300;
+      color: #aaa;
     }
 
     button {
