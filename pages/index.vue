@@ -3,173 +3,177 @@
     <section id="hero-header">
       <div id="hero">
         <img id="hero-img-header" src="~/assets/hero-header.png" alt="hero-header" />
-        <img id="bg-img-header" src="~/assets/bg-header.png" alt="bg-header" />
       </div>
       <div id="content-header">
         <h1 id="title-header">HEART DIAGNOSIS</h1>
         <p class="text-muted">Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI!</p>
-        <a href="#title-form-diagnosa">
+        <nuxt-link to="formDiagnosa">
           <button>Diagnosis Sekarang !</button>
-        </a>
+        </nuxt-link>
       </div>
     </section>
+
+    <!-- Display Info about Heart Disease -->
+
     <section id="heart-disease-danger">
       <div id="content-hdd">
         <p>
-          <strong>Penyakit kardiovaskular</strong> menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.
+          Penyakit kardiovaskular menjadi penyebab kematian nomor satu di
+          Indonesia. Data dari Institute for Health Metrics and Evaluation,
+          lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian
+          akibat penyakit ini mencapai 36,3 persen dari total kematian di
+          Indonesia pada 2016.
         </p>
       </div>
       <div id="hero-hdd">
-        <img id="svg-1" src="~/assets/svg-1.png" alt="hero-hdd" />
+        <img id="svg-1" src="~/assets/hero-hdd.png" alt="hero-hdd" />
       </div>
     </section>
-    <section id="form-diagnosa">
-      <Form />
-    </section>
-    <div id="news-section">
+
+    <!-------------------------------------->
+
+    <!-- Display App Feature -->
+
+    <Feature />
+
+    <!------------------------->
+
+    <!-- Display App Developer -->
+
+    <Developer />
+
+    <!--------------------------->
+
+    <!-- Display News Related to Heart Disease -->
+
+    <section id="news">
+      <h1>Artikel Terkait</h1>
       <News />
-    </div>
+    </section>
+
+    <!------------------------------------------->
   </div>
 </template>
 
 <script>
-import Form from "@/components/form";
 import News from "@/components/news";
+import Developer from "@/components/developer";
+import Feature from "@/components/feature";
 
 export default {
   components: {
-    Form,
-    News
+    News,
+    Developer,
+    Feature
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 800px) {
-  section#hero-header {
-    grid-template-columns: 100% !important;
+section#hero-header {
+  height: 80vh;
 
-    div#content-header {
-      padding: 0 2em 4em 4em !important;
+  div#hero {
+    text-align: center;
+
+    img#hero-img-header {
+      margin-top: 5vh;
+      max-width: 60%;
     }
   }
 
-  section#heart-disease-danger {
-    grid-template-columns: 100% !important;
+  div#content-header {
+    margin-top: 4em;
+    text-align: right;
+    padding: 0 2em;
 
-    div#hero-hdd {
-      img {
-        top: 120vh !important;
-        max-height: 50% !important;
+    a {
+      button {
+        background: transparent;
+        border: 1px solid #0c9cc3;
+        padding: 8px;
+        border-radius: 20px;
+        font-size: 11px;
+        color: #222;
+        cursor: pointer;
+
+        &:hover {
+          background: #0c9cc3;
+          color: white;
+        }
       }
     }
   }
 }
 
 section#heart-disease-danger {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0c9cc3;
+  clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
+  padding: 2em;
 
   div#content-hdd {
-    height: 100%;
-    padding-left: 4em;
-    padding-right: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
     p {
-      font-size: 24px;
+      color: white;
+      font-weight: lighter;
     }
   }
 
   div#hero-hdd {
-    img {
-      max-height: 80%;
-    }
+    margin-top: 2em;
+    text-align: center;
 
     img#svg-1 {
-      position: absolute;
-      z-index: -1;
-      top: 80vh;
-      right: -10vw;
+      max-width: 80%;
     }
   }
 }
 
-section#hero-header {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  box-sizing: border-box;
-
-  div#hero {
-    display: flex;
-    padding-top: 2em;
-    margin-left: -4em;
-    width: 100%;
-
-    img#hero-img-header {
-      max-height: 65vh;
-      max-width: 100vw;
-    }
-
-    img#bg-img-header {
-      position: absolute;
-      max-height: 90%;
-      max-width: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+section#news {
+  h1 {
+    text-align: center;
   }
+}
 
-  div#content-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0 4em 0 6em;
-    text-align: right;
+@media only screen and (min-width: 700px) {
+  section#hero-header {
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: 2em;
 
-    h1 {
-      font-size: 54px;
-    }
+    div#content-header {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
 
-    p {
-      word-wrap: break-word;
-    }
+      h1 {
+        font-size: 5vh;
+      }
 
-    .text-muted {
-      font-weight: 300;
-      color: #aaa;
-    }
-
-    button {
-      cursor: pointer;
-      background: #f0134d;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      padding: 8px;
-      font-weight: bold;
-
-      &:hover {
-        background: #222;
+      p {
+        font-size: 20px;
       }
     }
   }
-}
 
-section#form-diagnosa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  section#heart-disease-danger {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
 
-div#news-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    div#content-hdd {
+      padding: 1em;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
 }
 </style>

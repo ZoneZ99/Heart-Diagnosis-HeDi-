@@ -46,7 +46,6 @@ export default {
 
 <style lang="scss" scoped>
 div.container {
-  width: 100%;
   padding: 2em;
   display: flex;
   overflow: scroll;
@@ -56,7 +55,6 @@ div.container {
   }
 
   div.card {
-
     box-sizing: border-box;
     border-radius: 10px;
     min-width: 250px;
@@ -87,7 +85,6 @@ div.container {
 
     &:hover {
       box-shadow: 0px 0px 10px #ddd;
-
     }
   }
 }

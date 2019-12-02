@@ -252,6 +252,10 @@ export default {
 <style lang="scss" scoped>
 div#form-diagnosa {
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   h1#title-form-diagnosa {
     font-size: 32px;

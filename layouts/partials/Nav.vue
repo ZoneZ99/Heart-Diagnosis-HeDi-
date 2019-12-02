@@ -45,7 +45,7 @@ header {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 25% 75%;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba($color: #fff, $alpha: 0.8);
 
   div#logo-nav {
     display: flex;

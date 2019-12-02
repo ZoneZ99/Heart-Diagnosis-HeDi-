@@ -30,6 +30,7 @@ h2,
 h3,
 h4 {
   margin: 0;
+  box-sizing: border-box;
   font-family: "Signika", sans-serif;
 }
 </style>
