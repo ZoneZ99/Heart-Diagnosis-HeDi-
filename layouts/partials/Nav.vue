@@ -8,12 +8,18 @@
     </div>
     <nav>
       <ul>
-        <nuxt-link to="/">
+        <a href="#">
           <li>home</li>
-        </nuxt-link>
-        <nuxt-link to="/about">
-          <li>about</li>
-        </nuxt-link>
+        </a>
+        <a href="#heart-disease-danger">
+          <li>heart disease</li>
+        </a>
+        <a href="#app-features">
+          <li>Features</li>
+        </a>
+        <a href="#hedi-developer">
+          <li>Developer</li>
+        </a>
       </ul>
     </nav>
   </header>
@@ -27,6 +33,7 @@ export default {};
 @media only screen and (max-width: 800px) {
   header {
     nav {
+      display: none;
       ul {
         a {
           padding: 10px !important;
@@ -37,6 +44,7 @@ export default {};
 }
 
 header {
+  height: 8vh;
   position: sticky;
   top: 0;
   left: 0;
@@ -56,6 +64,7 @@ header {
       text-decoration: none;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       span {
         color: #f0134d;

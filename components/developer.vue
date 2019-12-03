@@ -1,28 +1,28 @@
 <template>
   <div>
     <section id="hedi-developer">
-      <h1>Men Behind The Project</h1>
+      <h1 data-aos="fade">Men Behind The Project</h1>
       <div class="grid">
-        <div class="card">
+        <div class="card" data-aos="fade-right">
           <div class="circle">
             <img src="~/assets/profile-supri.jpg" alt="Ahmad Supriyanto" />
           </div>
           <h3 class="name">Ahmad Supriyanto</h3>
           <p class="description">Frontend Developer</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-right">
           <div class="circle"></div>
           <h3 class="name">Alfian Fuadi</h3>
           <p class="description">Programmer</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-right">
           <div class="circle">
             <img src="~/assets/profile-farhan.jpg" alt />
           </div>
           <h3 class="name">Farhan Azyumardhi</h3>
           <p class="description">Programmer</p>
         </div>
-        <div class="card">
+        <div class="card" data-aos="fade-right">
           <div class="circle">
             <img src="~/assets/profile-vincent.jpg" alt />
           </div>
@@ -35,7 +35,12 @@
 </template>
 
 <script>
-export default {};
+import AOS from "aos";
+export default {
+  mounted() {
+    AOS.init();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -80,6 +85,12 @@ section#hedi-developer {
         text-align: center;
       }
     }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  section#hedi-developer {
+    height: 100vh;
   }
 }
 </style>

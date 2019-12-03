@@ -1,21 +1,20 @@
 <template>
   <div>
     <section id="app-features">
-      <h1>What you get from Hedi...</h1>
+      <h1 data-aos="fade-right">What you get from Hedi...</h1>
       <div class="container">
         <div class="card-container">
-          <div class="card">
+          <div class="card" data-aos="zoom-in">
             <img src="~/assets/machine-learning.png" alt="img-feature" />
             <h1>Machine Learning</h1>
             <p>
               Hedi menerapkan metode
-              <i>Decision Tree</i> untuk mengolah
-              data-datanya.
+              <i>Decision Tree</i> untuk mengolah data-datanya.
             </p>
           </div>
         </div>
         <div class="card-container">
-          <div class="card">
+          <div class="card" data-aos="zoom-in">
             <img src="~/assets/accuracy.png" alt="img-feature" />
             <h1>Accuracy</h1>
             <p>
@@ -26,7 +25,7 @@
           </div>
         </div>
         <div class="card-container">
-          <div class="card">
+          <div class="card" data-aos="zoom-in">
             <img src="~/assets/machine-learning.png" alt="img-feature" />
             <h1>User Friendly</h1>
             <p>
@@ -41,7 +40,13 @@
 </template>
 
 <script>
-export default {};
+import AOS from "aos";
+
+export default {
+  mounted() {
+    AOS.init();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -55,7 +60,7 @@ section#app-features {
     width: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 
     div.card-container {
       display: flex;
@@ -63,7 +68,8 @@ section#app-features {
       justify-content: center;
 
       div.card {
-        width: 200px;
+        max-width: 300px;
+        height: 460px;
         display: flex;
         flex-direction: column;
         align-items: center;

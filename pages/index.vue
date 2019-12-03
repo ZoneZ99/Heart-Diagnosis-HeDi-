@@ -1,31 +1,38 @@
 <template>
   <div>
     <section id="hero-header">
-      <div id="hero">
-        <img id="hero-img-header" src="~/assets/hero-header.png" alt="hero-header" />
+      <div id="hero" data-aos="fade-up">
+        <img
+          id="hero-img-header"
+          src="~/assets/hero-header.png"
+          alt="hero-header"
+        />
       </div>
-      <div id="content-header">
+      <div id="content-header" data-aos="fade-left">
         <h1 id="title-header">HEART DIAGNOSIS</h1>
-        <p class="text-muted">Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI!</p>
+        <p class="text-muted">
+          Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI!
+        </p>
         <nuxt-link to="formDiagnosa">
           <button>Diagnosis Sekarang !</button>
         </nuxt-link>
       </div>
     </section>
-
     <!-- Display Info about Heart Disease -->
 
-    <section id="heart-disease-danger">
-      <div id="content-hdd">
+    <section id="heart-disease-danger" data-aos="fade-up">
+      <div id="content-hdd" data-aos="fade-right">
         <p>
-          Penyakit kardiovaskular menjadi penyebab kematian nomor satu di
-          Indonesia. Data dari Institute for Health Metrics and Evaluation,
-          lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian
-          akibat penyakit ini mencapai 36,3 persen dari total kematian di
-          Indonesia pada 2016.
+          Menurut WHO, penyakit kardiovaskular adalah penyebab nomor 1 kematian
+          secara global. Diperkirakan 17,9 juta orang meninggal karena penyakit
+          kardiovaskular pada tahun 2016, angka ini mewakili 31% dari semua
+          kematian global. Dari kematian ini, 85% disebabkan oleh serangan
+          jantung dan stroke. Di Indonesia penyakit kardiovaskular dikaitkan
+          dengan penyakit jantung. Penyakit kardiovaskular dapat meliputi
+          kondisi tertentu yang melibatkan jantung dan pembuluh darah.
         </p>
       </div>
-      <div id="hero-hdd">
+      <div id="hero-hdd" data-aos="fade-left">
         <img id="svg-1" src="~/assets/hero-hdd.png" alt="hero-hdd" />
       </div>
     </section>
@@ -46,10 +53,7 @@
 
     <!-- Display News Related to Heart Disease -->
 
-    <section id="news">
-      <h1>Artikel Terkait</h1>
-      <News />
-    </section>
+    <News />
 
     <!------------------------------------------->
   </div>
@@ -59,12 +63,16 @@
 import News from "@/components/news";
 import Developer from "@/components/developer";
 import Feature from "@/components/feature";
+import AOS from "aos";
 
 export default {
   components: {
     News,
     Developer,
     Feature
+  },
+  mounted() {
+    AOS.init();
   }
 };
 </script>
@@ -107,7 +115,7 @@ section#hero-header {
 }
 
 section#heart-disease-danger {
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,15 +141,9 @@ section#heart-disease-danger {
   }
 }
 
-section#news {
-  h1 {
-    text-align: center;
-  }
-}
-
 @media only screen and (min-width: 700px) {
   section#hero-header {
-    height: 80%;
+    height: 92vh;
     display: grid;
     grid-template-columns: repeat(2, 50%);
     padding: 2em;
@@ -164,6 +166,7 @@ section#news {
   }
 
   section#heart-disease-danger {
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(2, 50%);
 

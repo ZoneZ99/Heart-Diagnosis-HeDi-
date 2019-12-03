@@ -22,7 +22,12 @@ export default {
 html {
   scroll-behavior: smooth;
 }
-
+* {
+  box-sizing: border-box;
+}
+section {
+  overflow: hidden;
+}
 html,
 body,
 h1,
@@ -30,7 +35,6 @@ h2,
 h3,
 h4 {
   margin: 0;
-  box-sizing: border-box;
   font-family: "Signika", sans-serif;
 }
 </style>
