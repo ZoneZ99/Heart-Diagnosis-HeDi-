@@ -15,11 +15,17 @@ export default {
       }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: "~/assets/favicon.ico" },
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css?family=Signika:400,700&display=swap"
+          "https://fonts.googleapis.com/css?family=Signika:300, 400,700&display=swap"
+      },
+      { rel: "stylesheet", href: "https://unpkg.com/aos@2.3.1/dist/aos.css" }
+    ],
+    script: [
+      {
+        src: "https://unpkg.com/aos@2.3.1/dist/aos.js"
       }
     ]
   },

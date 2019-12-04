@@ -1,109 +1,182 @@
 <template>
   <div>
-    <div id="hero-header" class="grid-2">
-      <div id="logo-header">
-        <h1>hedi</h1>
+    <section id="hero-header">
+      <div id="hero" data-aos="fade-up">
+        <img
+          id="hero-img-header"
+          src="~/assets/hero-header.png"
+          alt="hero-header"
+        />
       </div>
-      <div id="content-header">
-        <p>Penyakit kardiovaskular menjadi penyebab kematian nomor satu di Indonesia. Data dari Institute for Health Metrics and Evaluation, lembaga statistik kesehatan asal Amerika Serikat menyebutkan kematian akibat penyakit ini mencapai 36,3 persen dari total kematian di Indonesia pada 2016.</p>
-        <p>
-          <strong>Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI !</strong>
+      <div id="content-header" data-aos="fade-left">
+        <h1 id="title-header">HEART DIAGNOSIS</h1>
+        <p class="text-muted">
+          Ayo, periksa apakah kamu memiliki gejala penyakit jantung dengan HEDI!
         </p>
-        <a href="#title-form-diagnosa">
+        <nuxt-link to="formDiagnosa">
           <button>Diagnosis Sekarang !</button>
-        </a>
+        </nuxt-link>
       </div>
-    </div>
-    <div id="news-section">
-      <News />
-    </div>
-    <section id="form-diagnosa">
-      <Form />
     </section>
+    <!-- Display Info about Heart Disease -->
+
+    <section id="heart-disease-danger" data-aos="fade-up">
+      <div id="content-hdd" data-aos="fade-right">
+        <p>
+          Menurut WHO, penyakit kardiovaskular adalah penyebab nomor 1 kematian
+          secara global. Diperkirakan 17,9 juta orang meninggal karena penyakit
+          kardiovaskular pada tahun 2016, angka ini mewakili 31% dari semua
+          kematian global. Dari kematian ini, 85% disebabkan oleh serangan
+          jantung dan stroke. Di Indonesia penyakit kardiovaskular dikaitkan
+          dengan penyakit jantung. Penyakit kardiovaskular dapat meliputi
+          kondisi tertentu yang melibatkan jantung dan pembuluh darah.
+        </p>
+      </div>
+      <div id="hero-hdd" data-aos="fade-left">
+        <img id="svg-1" src="~/assets/hero-hdd.png" alt="hero-hdd" />
+      </div>
+    </section>
+
+    <!-------------------------------------->
+
+    <!-- Display App Feature -->
+
+    <Feature />
+
+    <!------------------------->
+
+    <!-- Display App Developer -->
+
+    <Developer />
+
+    <!--------------------------->
+
+    <!-- Display News Related to Heart Disease -->
+
+    <News />
+
+    <!------------------------------------------->
   </div>
 </template>
 
 <script>
-import Form from "@/components/form";
 import News from "@/components/news";
+import Developer from "@/components/developer";
+import Feature from "@/components/feature";
+import AOS from "aos";
 
 export default {
   components: {
-    Form,
-    News
+    News,
+    Developer,
+    Feature
+  },
+  mounted() {
+    AOS.init();
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 800px) {
-  div#hero-header {
-    padding: 2em !important;
-    display: grid;
-    grid-template-columns: 100% !important;
+section#hero-header {
+  height: 80vh;
 
-    div#logo-header {
-      margin-top: 0 !important;
-      margin-right: 0 !important;
-      display: flex;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-  }
-}
+  div#hero {
+    text-align: center;
 
-div#hero-header {
-  box-sizing: border-box;
-  background: #f8f8f8;
-  padding: 2em 4em;
-  display: grid;
-  grid-template-columns: 25% 75%;
-
-  div#logo-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    margin-top: 1.5em;
-    margin-right: 2em;
-
-    h1 {
-      text-transform: uppercase;
-      color: #f0134d;
-      font-size: 54px;
+    img#hero-img-header {
+      margin-top: 5vh;
+      max-width: 60%;
     }
   }
 
   div#content-header {
-    p {
-      word-wrap: break-word;
-      text-align: justify;
-    }
+    margin-top: 4em;
+    text-align: right;
+    padding: 0 2em;
 
-    button {
-      cursor: pointer;
-      background: #f0134d;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      padding: 8px;
-      font-weight: bold;
+    a {
+      button {
+        background: transparent;
+        border: 1px solid #0c9cc3;
+        padding: 8px;
+        border-radius: 20px;
+        font-size: 11px;
+        color: #222;
+        cursor: pointer;
 
-      &:hover {
-        background: #222;
+        &:hover {
+          background: #0c9cc3;
+          color: white;
+        }
       }
     }
   }
 }
 
-section#form-diagnosa {
+section#heart-disease-danger {
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background: #0c9cc3;
+  clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
+  padding: 2em;
+
+  div#content-hdd {
+    p {
+      color: white;
+      font-weight: lighter;
+    }
+  }
+
+  div#hero-hdd {
+    margin-top: 2em;
+    text-align: center;
+
+    img#svg-1 {
+      max-width: 80%;
+    }
+  }
 }
 
-div#news-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media only screen and (min-width: 700px) {
+  section#hero-header {
+    height: 92vh;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: 2em;
+
+    div#content-header {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+
+      h1 {
+        font-size: 5vh;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
+  section#heart-disease-danger {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+
+    div#content-hdd {
+      padding: 1em;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
 }
 </style>

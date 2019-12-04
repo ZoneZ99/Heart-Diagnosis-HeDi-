@@ -1,12 +1,17 @@
 <template>
-  <div class="container">
-    <div class="card" v-for="(data, index) in news" v-bind:key="index">
-      <a :href="data.url">
-        <img class="img-fluid" :src="data.urlToImage" />
-        <h3 class="title">{{ data.title }}</h3>
-        <p class="source">{{ data.source }}</p>
-      </a>
-    </div>
+  <div v-if="news.length !== 0">
+    <section id="news">
+      <h1>Artikel Terkait</h1>
+      <div class="container">
+        <div class="card" v-for="(data, index) in news" v-bind:key="index">
+          <a :href="data.url">
+            <img class="img-fluid" :src="data.urlToImage" />
+            <h3 class="title">{{ data.title }}</h3>
+            <p class="source">{{ data.source }}</p>
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -45,12 +50,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section#news {
+  h1 {
+    text-align: center;
+  }
+}
 div.container {
-  width: 100%;
   padding: 2em;
   display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: scroll;
 
   &::-webkit-scrollbar {
@@ -61,7 +68,6 @@ div.container {
     box-sizing: border-box;
     border-radius: 10px;
     min-width: 250px;
-    height: 320px;
     margin: 0 1em;
     padding: 20px;
 
@@ -81,8 +87,14 @@ div.container {
     }
 
     a {
+      width: 100%;
+      height: 100%;
       color: black;
       text-decoration: none;
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 10px #ddd;
     }
   }
 }

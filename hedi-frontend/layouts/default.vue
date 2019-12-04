@@ -22,7 +22,12 @@ export default {
 html {
   scroll-behavior: smooth;
 }
-
+* {
+  box-sizing: border-box;
+}
+section {
+  overflow: hidden;
+}
 html,
 body,
 h1,
