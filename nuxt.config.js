@@ -52,7 +52,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
     "@nuxtjs/proxy",
-    "nuxt-fullpage.js"
+    "nuxt-fullpage.js",
+    "nuxt-material-design-icons"
   ],
   /*
    ** Axios module configuration

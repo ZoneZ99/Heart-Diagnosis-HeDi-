@@ -1,8 +1,8 @@
 <template>
-  <client-only>
-    <full-page ref="fullpage" :options="options" id="fullpage">
-      <div id="form-diagnosa">
-        <form method="post">
+  <div id="form-diagnosa">
+    <form method="post">
+      <client-only>
+        <full-page ref="fullpage" :options="options" id="fullpage">
           <div class="section">
             <div class="center">
               <div class="form-group">
@@ -14,20 +14,17 @@
                     id="namaPanjang"
                     type="text"
                     class="input-text"
-                    required
                   />
                 </div>
-                <button
-                  class="next btn out-green"
-                  @click="$refs.fullpage.api.moveSectionDown()"
-                >
-                  Next
-                </button>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
 
-          <div id="jenisKelaminPage" class="section">
+          <div class="section">
             <div class="center">
               <div class="form-group">
                 <label for="jenisKelamin">Jenis Kelamin Kamu,____? *</label>
@@ -44,20 +41,10 @@
                     <option value="2">Laki-Laki</option>
                   </select>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -76,20 +63,10 @@
                   />
                   <p class="format">tahun</p>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -109,20 +86,10 @@
                   />
                   <p class="format">cm</p>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -142,20 +109,10 @@
                   />
                   <p class="format">Kg</p>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -175,20 +132,10 @@
                   />
                   <p class="format">mmHg</p>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -208,20 +155,10 @@
                   />
                   <p class="format">mmHg</p>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -256,20 +193,10 @@
                     Tinggi (>240)
                   </button>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -306,20 +233,10 @@
                     Tinggi (>200)
                   </button>
                 </div>
-                <div class="flex">
-                  <button
-                    class="next btn cancel"
-                    @click="$refs.fullpage.api.moveSectionUp()"
-                  >
-                    Previous
-                  </button>
-                  <button
-                    class="next btn out-green"
-                    @click="$refs.fullpage.api.moveSectionDown()"
-                  >
-                    Next
-                  </button>
-                </div>
+                <p class="scroll">
+                  <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                  untuk melanjutkan !
+                </p>
               </div>
             </div>
           </div>
@@ -335,20 +252,10 @@
                 />
                 <label for="olahraga">Apakah kamu sering olah raga ?</label>
               </div>
-              <div class="flex">
-                <button
-                  class="next btn cancel"
-                  @click="$refs.fullpage.api.moveSectionUp()"
-                >
-                  Previous
-                </button>
-                <button
-                  class="next btn out-green"
-                  @click="$refs.fullpage.api.moveSectionDown()"
-                >
-                  Next
-                </button>
-              </div>
+              <p class="scroll">
+                <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                untuk melanjutkan !
+              </p>
             </div>
           </div>
 
@@ -363,20 +270,10 @@
                 />
                 <label for="perokok">Apakah kamu seorang perokok aktif ?</label>
               </div>
-              <div class="flex">
-                <button
-                  class="next btn cancel"
-                  @click="$refs.fullpage.api.moveSectionUp()"
-                >
-                  Previous
-                </button>
-                <button
-                  class="next btn out-green"
-                  @click="$refs.fullpage.api.moveSectionDown()"
-                >
-                  Next
-                </button>
-              </div>
+              <p class="scroll">
+                <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                untuk melanjutkan !
+              </p>
             </div>
           </div>
 
@@ -393,20 +290,10 @@
                   >Apakah kamu seorang pecandu alkohol ?</label
                 >
               </div>
-              <div class="flex">
-                <button
-                  class="next btn cancel"
-                  @click="$refs.fullpage.api.moveSectionUp()"
-                >
-                  Previous
-                </button>
-                <button
-                  class="next btn out-green"
-                  @click="$refs.fullpage.api.moveSectionDown()"
-                >
-                  Next
-                </button>
-              </div>
+              <p class="scroll">
+                <i class="material-icons">arrow_downward</i> Scroll ke bawah
+                untuk melanjutkan !
+              </p>
             </div>
           </div>
 
@@ -419,12 +306,6 @@
                     <p>* {{ error }}</p>
                   </div>
                   <div class="flex">
-                    <button
-                      class="next btn cancel"
-                      @click="$refs.fullpage.api.moveSectionUp()"
-                    >
-                      Previous
-                    </button>
                     <button
                       type="submit"
                       v-on:click="submitForm"
@@ -456,10 +337,10 @@
               </div>
             </div>
           </div>
-        </form>
-      </div>
-    </full-page>
-  </client-only>
+        </full-page>
+      </client-only>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -597,6 +478,38 @@ export default {
     form {
       .section {
         padding: 2em !important;
+
+        .scroll {
+          font-size: 14px;
+
+          .material-icons {
+            font-size: 18px;
+          }
+        }
+
+        .form-group {
+          label {
+            font-size: 16px;
+          }
+
+          p.format {
+            font-size: 18px;
+          }
+
+          input,
+          select {
+            font-size: 16px;
+          }
+
+          .input-text {
+            width: 75%;
+            height: 2em;
+          }
+          .input-number {
+            width: 75%;
+            height: 2em;
+          }
+        }
       }
     }
   }
@@ -608,11 +521,6 @@ div#form-diagnosa {
   }
 
   form {
-    p {
-      margin: 0;
-      margin-block: 0;
-    }
-
     .section {
       height: 100vh;
       width: 100vw;
@@ -626,6 +534,15 @@ div#form-diagnosa {
       }
     }
 
+    p.scroll {
+      margin-top: 25px;
+      font-weight: lighter;
+
+      i {
+        animation: UpDown 1s infinite;
+      }
+    }
+
     .form-group {
       width: 100%;
 
@@ -635,8 +552,8 @@ div#form-diagnosa {
       }
 
       .input-number {
-        width: 10em;
-        height: 4em;
+        width: 100%;
+        height: 3em;
       }
 
       div.btn-level-group {
@@ -694,6 +611,7 @@ div#form-diagnosa {
 
         p.format {
           margin-left: 10px;
+          font-size: 24px;
         }
       }
     }
@@ -804,5 +722,31 @@ div#result {
 
 div.flex {
   display: flex;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes UpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Standard syntax */
+@keyframes UpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 </style>
