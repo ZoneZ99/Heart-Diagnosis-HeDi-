@@ -10,11 +10,11 @@
 import FormDiagnosa from "@/components/form";
 
 export default {
+  scrollToTop: true,
   components: {
     FormDiagnosa
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

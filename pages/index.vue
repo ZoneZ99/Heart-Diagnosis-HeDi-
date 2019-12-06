@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Nav />
     <section id="hero-header">
       <div id="hero" data-aos="fade-up">
         <img
@@ -60,13 +61,16 @@
 </template>
 
 <script>
+import Nav from "../layouts/partials/Nav";
 import News from "@/components/news";
 import Developer from "@/components/developer";
 import Feature from "@/components/feature";
 import AOS from "aos";
 
 export default {
+  scrollToTop: true,
   components: {
+    Nav,
     News,
     Developer,
     Feature
