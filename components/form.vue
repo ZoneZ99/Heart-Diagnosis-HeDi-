@@ -6,10 +6,15 @@
       </div>
     </transition>
     <transition name="fade">
-      <div class="modal center" v-if="showResult == true">
+      <div class="modal center" v-if="showModal == true">
         <div class="overlay"></div>
-        <div id="result" v-bind:class="[ {greenGradient : !isCancer}, {redGradient : isCancer}]">
-          <i class="material-icons">close</i>
+        <img v-if="loading == true" src="~/assets/loading.gif" alt="loading" />
+        <div
+          v-else
+          id="result"
+          v-bind:class="[ {greenGradient : !isCancer}, {redGradient : isCancer}]"
+        >
+          <i class="material-icons" v-if="loading == false" v-on:click="hideModal">close</i>
           <div class="center">
             <p id="description">
               Hasil diagnosa menunjukkan bahwa
@@ -31,6 +36,7 @@
               <label for="namaPanjang">Siapa nama kamu ? *</label>
               <div>
                 <input
+                  required
                   placeholder="Tulis nama kamu disini..."
                   v-model="form['nama']"
                   id="namaPanjang"
@@ -86,6 +92,7 @@
               <label for="tglLahir">Tanggal Lahir</label>
               <div class="row">
                 <input
+                  required
                   id="tglLahir"
                   v-model="form['tanggalLahir']"
                   type="date"
@@ -112,6 +119,7 @@
               <label for="tinggiBadan">Tinggi Badan</label>
               <div class="row">
                 <input
+                  required
                   id="tinggiBadan"
                   v-model="form['tinggiBadan']"
                   type="number"
@@ -139,6 +147,7 @@
               <label for="berat-badan">Berat Badan</label>
               <div class="row">
                 <input
+                  required
                   id="beratBadan"
                   v-model="form['beratBadan']"
                   type="number"
@@ -166,6 +175,7 @@
               <label for="tekananSistolik">Tekanan Sistolik</label>
               <div class="row">
                 <input
+                  required
                   id="tekananSistolik"
                   v-model="form['tekananSistolik']"
                   type="number"
@@ -193,6 +203,7 @@
               <label for="tekananSistolik">Tekanan Diastolik</label>
               <div class="row">
                 <input
+                  required
                   id="tekananDiastolik"
                   v-model="form['tekananDiastolik']"
                   type="number"
@@ -377,9 +388,9 @@ export default {
         isMerokok: false,
         isPeminum: false
       },
-      showResult: false,
+      showModal: false,
       result: "",
-      isCancer: false,
+      isCancer: "",
       isColGood: true,
       isColImportant: false,
       isColDanger: false,
@@ -400,7 +411,7 @@ export default {
     },
     submitForm() {
       event.preventDefault();
-
+      this.showModal = true;
       this.loading = true;
       if (this.form.nama == "") {
         this.showError = true;
@@ -431,15 +442,15 @@ export default {
         axios
           .post("https://hedi-backend.herokuapp.com/result/", this.form)
           .then(response => {
+            this.loading = false;
             this.result = response.data.result;
-            if (result === 1) isCancer = true;
-            else isCancer = false;
-            this.showResult = true;
+            if (this.result == 1) this.isCancer = true;
+            else this.isCancer = false;
           });
       }
     },
-    hideResult() {
-      this.showResult = false;
+    hideModal() {
+      this.showModal = false;
     },
     hideError() {
       this.showError = false;
@@ -791,14 +802,10 @@ a {
     text-align: center;
   }
 
-  .greenGradient {
-    background: linear-gradient(45deg, rgb(21, 211, 163), rgb(117, 218, 231));
-    color: white;
-  }
-
-  .redGradient {
-    background: linear-gradient(45deg, rgb(211, 59, 21), rgb(231, 140, 117));
-    color: white;
+  img {
+    z-index: 1;
+    border-radius: 20px;
+    max-width: 20%;
   }
 
   #result {
@@ -816,6 +823,16 @@ a {
         transform: scale(1.2);
       }
     }
+  }
+
+  .greenGradient {
+    background: linear-gradient(45deg, rgb(21, 211, 163), rgb(117, 218, 231));
+    color: white;
+  }
+
+  .redGradient {
+    background: linear-gradient(45deg, rgb(211, 59, 21), rgb(231, 140, 117));
+    color: white;
   }
 }
 
