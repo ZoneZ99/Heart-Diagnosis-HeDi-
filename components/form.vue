@@ -411,8 +411,6 @@ export default {
     },
     submitForm() {
       event.preventDefault();
-      this.showModal = true;
-      this.loading = true;
       if (this.form.nama == "") {
         this.showError = true;
         this.error = "Isi Nama terlebih dahulu !";
@@ -439,6 +437,8 @@ export default {
         fullpage_api.moveTo(5);
         setTimeout(this.hideError, 3000);
       } else {
+        this.showModal = true;
+        this.loading = true;
         axios
           .post("https://hedi-backend.herokuapp.com/result/", this.form)
           .then(response => {
