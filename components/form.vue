@@ -94,6 +94,7 @@
                 <input
                   required
                   id="tglLahir"
+                  ref="tglLahir"
                   v-model="form['tanggalLahir']"
                   type="date"
                   class="input-text"
@@ -402,6 +403,11 @@ export default {
       loading: false
     };
   },
+  updated() {
+    this.$nextTick(function() {
+      this.$refs.tglLahir.max = new Date().toISOString().split("T")[0];
+    });
+  },
   methods: {
     prevInput() {
       fullpage_api.moveSectionUp();
@@ -426,14 +432,14 @@ export default {
         this.error = "Isi Tanggal Lahir terlebih dahulu !";
         fullpage_api.moveTo(3);
         setTimeout(this.hideError, 3000);
-      } else if (this.form.beratBadan == 0) {
-        this.showError = true;
-        this.error = "Isi Berat Badan dengan benar !";
-        fullpage_api.moveTo(4);
-        setTimeout(this.hideError, 3000);
       } else if (this.form.tinggiBadan == 0) {
         this.showError = true;
         this.error = "Isi Tinggi Badan dengan benar !";
+        fullpage_api.moveTo(4);
+        setTimeout(this.hideError, 3000);
+      } else if (this.form.beratBadan == 0) {
+        this.showError = true;
+        this.error = "Isi Berat Badan dengan benar !";
         fullpage_api.moveTo(5);
         setTimeout(this.hideError, 3000);
       } else {
