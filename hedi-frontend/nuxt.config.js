@@ -15,7 +15,7 @@ export default {
       }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "~/assets/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: "/assets/favicon.ico" },
       {
         rel: "stylesheet",
         href:
@@ -40,7 +40,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: "~/plugins/fullpage", mode: "client" }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -51,7 +51,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/proxy"
+    "@nuxtjs/proxy",
+    "nuxt-fullpage.js",
+    "nuxt-material-design-icons"
   ],
   /*
    ** Axios module configuration

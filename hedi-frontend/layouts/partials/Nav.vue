@@ -32,6 +32,10 @@ export default {};
 <style scoped lang="scss">
 @media only screen and (max-width: 800px) {
   header {
+    padding: 1em;
+    div#logo-nav {
+      padding-left: 0 !important;
+    }
     nav {
       display: none;
       ul {
@@ -44,7 +48,6 @@ export default {};
 }
 
 header {
-  height: 8vh;
   position: sticky;
   top: 0;
   left: 0;
@@ -56,9 +59,9 @@ header {
   background: rgba($color: #fff, $alpha: 0.8);
 
   div#logo-nav {
+    padding-left: 2em;
     display: flex;
     align-items: center;
-    padding-left: 2em;
 
     a {
       text-decoration: none;
@@ -81,8 +84,6 @@ header {
   }
 
   nav {
-    padding-right: 2em;
-
     ul {
       display: flex;
       justify-content: flex-end;
