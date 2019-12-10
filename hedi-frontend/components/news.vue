@@ -65,6 +65,7 @@ div.container {
   }
 
   div.card {
+
     box-sizing: border-box;
     border-radius: 10px;
     min-width: 250px;
