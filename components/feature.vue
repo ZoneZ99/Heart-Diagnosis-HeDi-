@@ -20,7 +20,7 @@
             <p>
               Tingkat akurasi Hedi cukup meyakinkan. Tree dibuat dengan tingkat
               akurasi sebesar
-              <strong>76%</strong>.
+              <strong>67%</strong>.
             </p>
           </div>
         </div>
