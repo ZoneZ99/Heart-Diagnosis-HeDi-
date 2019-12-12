@@ -20,9 +20,8 @@ def entropy_one_division(division):
     num_of_division = len(division)
     classess = set(division)
 
-    for clas in classess:
-        sum_entropy += sum(division == clas) * 1.0 / num_of_division * \
-                       entropy_calculation(sum(division == clas), sum(division != clas))
+    sum_entropy = entropy_calculation(sum(division == 0), sum(division != 0))
+
     return sum_entropy, num_of_division
 
 
@@ -34,9 +33,18 @@ def get_entropy(y_predict, y_real):
 
 
 class DecisionTreeClassifier:
+    
+    def __init__(self, dataset=None, max_depth=0, initial_tree=None):
+        if initial_tree is None:
+            self.trees = {}
+        else:
+            self.trees = initial_tree
 
-    def __init__(self, dataset, max_depth):
-        self.dataset = dataset
+        if dataset is None:
+            self.dataset = DatasetContainer()
+        else:
+            self.dataset = dataset
+
         self.max_depth = max_depth
 
     def find_best_split(self, split_column, target_variable):
@@ -68,7 +76,7 @@ class DecisionTreeClassifier:
         return all(x == items[0] for x in items)
 
     def fit_and_prune(self, feature_set, target_variable, parent_node={}, depth=0):
-        self.fit(self, feature_set, target_variable, parent_node, depth)
+        self.fit(feature_set, target_variable, parent_node, depth)
         self.prune(self.trees)
 
     def fit(self, feature_set, target_variable, parent_node={}, depth=0):
@@ -121,19 +129,15 @@ class DecisionTreeClassifier:
                 current_node = current_node['right']
         return current_node['val']
 
-
-
-    def can_be_added_to_queue(tree):
+    def can_be_added_to_queue(self, tree):
         has_children = tree.get('left') is not None or tree.get('right') is not None
         has_sub_trees = not tree.get('left')['IsLeafNode'] and not tree.get('right')['IsLeafNode']
         return tree is not None and has_children and has_sub_trees
-
 
     def prune(self, tree):
         priority_queue = [tree]
 
         while len(priority_queue) > 0:
-
             current_node = priority_queue[0]
             chisquare_current = self.count_chisquare(current_node)
             chisquare_left = self.count_chisquare(current_node['left'])
@@ -153,7 +157,6 @@ class DecisionTreeClassifier:
                     priority_queue.append(current_node['right'])
             priority_queue.remove(priority_queue[0])
 
-
     def count_chisquare(self, tree):
         num_of_parent_population = tree['Positive(1)'] + tree['Negative(0)']
         chance_positive = tree['Positive(1)'] / num_of_parent_population
@@ -170,7 +173,6 @@ class DecisionTreeClassifier:
         chisquare_right_negative = self.count_chisquare_util(right_child['Positive(1)'] + right_child['Negative(0)'],
                                                         chance_negative, right_child['Negative(0)'])
         return chisquare_left_negative + chisquare_left_positive + chisquare_right_negative + chisquare_right_positive
-
 
     def count_chisquare_util(self, total_population, chance, class_population):
         return (total_population * chance - class_population) ** 2 / (total_population * chance)
